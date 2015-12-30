@@ -38,10 +38,10 @@
             <h1>　兔　子　跑　跳　蹦　</h1>
         </header>
         <main data-role="content" id="content1">
-            <table background="pic/backGround01.jpg" align="center" style="width:640px;height:480px;" border="1">
+            <table background="pic/backGround01.jpg" align="center" style="width:640px;height:480px;overflow:hidden;" border="1">
                 <tr>
                     <td>
-                        <a href="#" id="showRabbit" data-role="image"> </a>
+                        <a href="#" id="showRabbit" data-role="image" onclick=""> </a>
                         <a href="#" id="startButton" data-role="button" data-theme="c" style="display:" onclick="startGame()"> 開始遊戲 </a>
                     </td>
                 </tr>
@@ -61,6 +61,7 @@
             var startButton = document.getElementById("startButton");
             document.getElementById(startButton.id).style.display = 'none';
             rabbit();
+            funny();
         }
         /* ++++++++++++++++++++++++++  出現兔子  ++++++++++++++++++++++ */
         function rabbit() {
@@ -71,75 +72,38 @@
 
             document.getElementById("showRabbit").innerHTML = '<img src="pic/' +
                 rabbitsPic + '.png" width="159" height="144" border="0" style="position: absolute; left: ' + x + 'px; top: ' + y + 'px">'; //顯示兔子
-            run();
+
+
 
             function run() {
-                y = y - 100;
-                document.getElementById("showRabbit").innerHTML = '<img src="pic/' +
-                    rabbitsPic + '.png" width="159" height="144" border="0" style="position: absolute; left: ' + x + 'px; top: ' + y + 'px">'; //顯示兔子
 
-                if (y == 100) {
+                if (y > 0) {
+                    y = y - 100;
+                    document.getElementById("showRabbit").innerHTML = '<img src="pic/' +
+                        rabbitsPic + '.png" width="159" height="144" border="0" style="position: absolute; left: ' + x + 'px; top: ' + y + 'px">'; //兔子累加距離
+                } else {
+                    var showRabbit = document.getElementById("showRabbit");
+                    document.getElementById(showRabbit.id).style.display = 'none';
                     return false;
+
+
                 }
-                setInterval(run(), 1000);
+
 
             }
 
-
-
-
-
-
-            document.getElementById("funny").innerHTML = '<img src="pic/' +
-                rabbitsPic + '.png" width="259" height="224" border="0" style="position: absolute; left: 0px; top: 300px">'; //左下角顯示兔子
+            setInterval(run, 1000);
         }
 
-        /*function timego() {
-            document.write('hi');
+        function funny() {
+            var funnyPic = Math.floor((Math.random() * 30) + 1); //1~30隨機選擇圖片
+
+            document.getElementById("funny").innerHTML = '<img src="pic/' +
+                funnyPic + '.png" width="259" height="224" border="0" style="position: absolute; left: 0px; top: 300px">'; //左下角顯示兔子
+        }
 
 
-            if (y == 100 {
-
-                    return false;
-                }
-            }
-            var timer = window.setInterval(timego(), 1000); //1秒後執行timego()
-            */
-
-        /*var showRabbit = document.getElementById("showRabbit");
-
-        var z = y - 200;
-        document.getElementById(showRabbit.id).style.top = z + 'px';
-        */
-
-        /*
-                    
-                        var timer = window.setInterval("timego()", 1000); //1秒後執行timego()
-
-                        document.getElementById("funny").innerHTML = '<img src="pic/' +
-                            rabbitsPic + '.png" width="259" height="224" border="0" style="position: absolute; left: 0px; top: 300px">'; //左下角顯示兔子
-
-                    }
-
-                    /*
-                            var sec = 10;
-
-                            function timego() {
-                                
-                    /*
-                                sec = sec - 1;
-
-
-                                if (sec == 8) {
-
-                                    return false;
-                                }
-
-                            }
-                            var timer = window.setInterval("timego()", 1000); //1秒後執行timego()
-                            }
-
-                            /* -----------  顯示兔子  ----------- */
+        /* -----------  顯示兔子  ----------- */
         /*
                 function showRabbit() {
                     function view(t) {
@@ -150,16 +114,16 @@
                                 '+.jpg" border="0">';
                                 break;
                             case 2: //呼叫並載入顯示第二個大圖片，以下請比照這個方式修改
-                                document.getElementById("img").innerHTML = '<img src="sakura/dsc02.jpg" width="450" height="338" border="0">';
+                                document.getElementById("showRabbit").innerHTML = '<img src="pic/' + rabbitsPic + '.png" width="450" height="338" border="0">';
                                 break;
                             case 3:
-                                document.getElementById("img").innerHTML = '<img src="sakura/dsc03.jpg" width="450" height="338" border="0">';
+                                document.getElementById("showRabbit").innerHTML = '<img src="pic/' + rabbitsPic + '.png" width="450" height="338" border="0">';
                                 break;
                             case 4:
-                                document.getElementById("img").innerHTML = '<img src="sakura/dsc04.jpg" width="450" height="338" border="0">';
+                                document.getElementById("showRabbit").innerHTML = '<img src="pic/' + rabbitsPic + '.png" width="450" height="338" border="0">';
                                 break;
                             case 5:
-                                document.getElementById("img").innerHTML = '<img src="sakura/dsc05.jpg" width="450" height="338" border="0">';
+                                document.getElementById("showRabbit").innerHTML = '<img src="pic/' + rabbitsPic + '.png" width="450" height="338" border="0">';
                                 break;
                         }
                     }
