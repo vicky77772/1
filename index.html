@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="themes/Bootstrap.css">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+    <script language="JavaScript" type="text/JavaScript">
+        function closewin() { 　　 window.setTimeout('window.opener=null;closeme()',0); } function closeme() { 　　 top.close(); }
+    </script>
+</head>
+
+<body>
+    <!-- ********************************* 起始頁面 ************************************** -->
+    <div data-role="page" id="home" data-theme="f">
+        <header data-role="header">
+            <h1><img src="pic/balloon.png" width="30" height="30">　兔　子　跑　跳　蹦　
+            <img src="pic/balloon.png" width="30" height="30"></h1>
+        </header>
+        <main data-role="content" id="content">
+            <p><a href="#game" data-role="button" data-theme="c"> 開始遊戲 </a></p>
+            <p><a href="#rabbitBook" data-role="button" data-theme="c"> 兔子收集冊 </a></p>
+            <p><a href="#team" data-role="button" data-theme="c"> 製作團隊 </a></p>
+            <p><a href="#" data-role="button" data-theme="c" onclick="closewin()"> 結束遊戲 </a></p>
+        </main>
+        <footer data-role="footer" id="footer">
+            <h4> Copyright © 2015 Vicky All rights reserved</h4>
+        </footer>
+    </div>
+    <!-- ********************************* 開始遊戲 ************************************** -->
+    <div data-role="page" id="game" data-theme="f">
+        <header data-role="header">
+            <a href="index.html" data-theme="c" data-icon="arrow-l">回上頁</a>
+            <h1>　兔　子　跑　跳　蹦　</h1>
+        </header>
+        <main data-role="content" id="content1">
+            <table background="pic/backGround01.jpg" align="center" style="width:640px;height:480px;" border="1">
+                <tr>
+                    <td>
+                        <a href="#" id="showRabbit" data-role="image"> </a>
+                        <a href="#" id="startButton" data-role="button" data-theme="c" style="display:" onclick="startGame()"> 開始遊戲 </a>
+                    </td>
+                </tr>
+            </table>
+            <div id="funny"></div>
+        </main>
+        <footer data-role="footer" id="footer">
+            <h4> Copyright © 2015 Vicky All rights reserved</h4>
+        </footer>
+        <!-- +++++++++++++++++++++++   執行遊戲    ++++++++++++++++++++ -->
+        <script>
+        function startGame() {
+            hiddenButton();
+        }
+        /* ++++++++++++++++++++++++++  隱藏按鈕  ++++++++++++++++++++++ */
+        function hiddenButton() {
+            var startButton = document.getElementById("startButton");
+            document.getElementById(startButton.id).style.display = 'none';
+            rabbit();
+        }
+        /* ++++++++++++++++++++++++++  出現兔子  ++++++++++++++++++++++ */
+        function rabbit() {
+            var rabbitsPic = Math.floor((Math.random() * 30) + 1); //1~30隨機選擇圖片
+            var x = 350;
+            var y = 400;
+
+
+            document.getElementById("showRabbit").innerHTML = '<img src="pic/' +
+                rabbitsPic + '.png" width="159" height="144" border="0" style="position: absolute; left: ' + x + 'px; top: ' + y + 'px">'; //顯示兔子
+            run();
+
+            function run() {
+                y = y - 100;
+                document.getElementById("showRabbit").innerHTML = '<img src="pic/' +
+                    rabbitsPic + '.png" width="159" height="144" border="0" style="position: absolute; left: ' + x + 'px; top: ' + y + 'px">'; //顯示兔子
+
+                if (y == 100) {
+                    return false;
+                }
+                setInterval(run(), 1000);
+
+            }
+
+
+
+
+
+
+            document.getElementById("funny").innerHTML = '<img src="pic/' +
+                rabbitsPic + '.png" width="259" height="224" border="0" style="position: absolute; left: 0px; top: 300px">'; //左下角顯示兔子
+        }
+
+        /*function timego() {
+            document.write('hi');
+
+
+            if (y == 100 {
+
+                    return false;
+                }
+            }
+            var timer = window.setInterval(timego(), 1000); //1秒後執行timego()
+            */
+
+        /*var showRabbit = document.getElementById("showRabbit");
+
+        var z = y - 200;
+        document.getElementById(showRabbit.id).style.top = z + 'px';
+        */
+
+        /*
+                    
+                        var timer = window.setInterval("timego()", 1000); //1秒後執行timego()
+
+                        document.getElementById("funny").innerHTML = '<img src="pic/' +
+                            rabbitsPic + '.png" width="259" height="224" border="0" style="position: absolute; left: 0px; top: 300px">'; //左下角顯示兔子
+
+                    }
+
+                    /*
+                            var sec = 10;
+
+                            function timego() {
+                                
+                    /*
+                                sec = sec - 1;
+
+
+                                if (sec == 8) {
+
+                                    return false;
+                                }
+
+                            }
+                            var timer = window.setInterval("timego()", 1000); //1秒後執行timego()
+                            }
+
+                            /* -----------  顯示兔子  ----------- */
+        /*
+                function showRabbit() {
+                    function view(t) {
+                        switch (t) {
+                            case 1: //呼叫並載入顯示第一個大圖片
+                                document.getElementById("showRabbit").innerHTML = '<img src="pic/"+'
+                                document.getElementById(rabbitsArray.value)
+                                '+.jpg" border="0">';
+                                break;
+                            case 2: //呼叫並載入顯示第二個大圖片，以下請比照這個方式修改
+                                document.getElementById("img").innerHTML = '<img src="sakura/dsc02.jpg" width="450" height="338" border="0">';
+                                break;
+                            case 3:
+                                document.getElementById("img").innerHTML = '<img src="sakura/dsc03.jpg" width="450" height="338" border="0">';
+                                break;
+                            case 4:
+                                document.getElementById("img").innerHTML = '<img src="sakura/dsc04.jpg" width="450" height="338" border="0">';
+                                break;
+                            case 5:
+                                document.getElementById("img").innerHTML = '<img src="sakura/dsc05.jpg" width="450" height="338" border="0">';
+                                break;
+                        }
+                    }
+                }
+
+                */
+        </script>
+    </div>
+</body>
+
+</html>
